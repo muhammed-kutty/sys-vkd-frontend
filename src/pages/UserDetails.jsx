@@ -9,7 +9,7 @@ const UserDetails = () => {
    const userDetails =  useSelector(state => state.user.data)
 
     const [FormShown, setFormShown] = useState(false);
-    const [data, setdata] = useState([])
+    // const [data, setdata] = useState([])
 
     const columns = [
         { header: 'ID', field: 'id' },
@@ -18,11 +18,11 @@ const UserDetails = () => {
         { header: 'Action', field: 'action' }
     ];
 
-    // const data = [
-    //     { id: 1, name: 'John Doe', phone: '123-456-7890' },
-    //     { id: 2, name: 'Jane Smith', phone: '987-654-3210' },
-    //     { id: 3, name: 'Alice Johnson', phone: '555-123-4567' }
-    // ];
+    const data = [
+        { id: 1, name: 'John Doe', phone: '123-456-7890' },
+        { id: 2, name: 'Jane Smith', phone: '987-654-3210' },
+        { id: 3, name: 'Alice Johnson', phone: '555-123-4567' }
+    ];
 
     // Function to handle delete action
     const handleDelete = (id) => {
@@ -74,6 +74,7 @@ const UserDetails = () => {
                 onCall={handleCall}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
+                name="user"
 
             />
         </>
