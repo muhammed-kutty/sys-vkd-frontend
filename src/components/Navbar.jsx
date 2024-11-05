@@ -61,7 +61,7 @@ const CustomNavbar = () => {
               </>
             ):(
 
-            <Nav.Link as={Link} to="/login">
+            <Nav.Link as={Link} to="/login" onClick={handleLinkClick}>
               Login
             </Nav.Link>
             )
