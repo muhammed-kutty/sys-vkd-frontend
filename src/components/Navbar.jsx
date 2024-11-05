@@ -52,8 +52,8 @@ const CustomNavbar = () => {
                   Categories
                 </Nav.Link>
                 <Nav.Link  onClick={()=>{
-                  handleLogut
-                  handleLinkClick
+                  handleLogut()
+                  handleLinkClick()
                 }}
                   >
                   Logout
