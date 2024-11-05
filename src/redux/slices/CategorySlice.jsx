@@ -5,21 +5,50 @@ import axios from "axios";
 
 
 
-export const fetchCategoriData = createAsyncThunk('category/fetchData', async (userToken, { rejectWithValue }) => {
-    console.log("api calle in category")
-    // const response = await axios.get('http://localhost:3000/api/category',{
-    const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category',{
-        headers:{
-            Authorization:`Bearer ${userToken}`
-       }
-    });
+// export const fetchCategoriData = createAsyncThunk('category/fetchData', async (userToken, { rejectWithValue }) => {
+//     console.log("api calle in category",userToken)
+//     // const response = await axios.get('http://localhost:3000/api/category',{
+//     const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category',{
+//         headers:{
+//             Authorization:`Bearer ${userToken}`
+//        }
+//     });
 
 
-    return response.data.categories
-;
+//     return response.data.categories
+// ;
  
-  });
+//   });
 
+
+export const fetchCategoriData = createAsyncThunk(
+    'category/fetchData',
+    async (userToken, { rejectWithValue }) => {
+        
+      try {
+        console.log("API call in category with token:", userToken);
+        
+    const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category',{
+
+        // const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category', {
+          headers: {
+            Authorization: `Bearer ${userToken}`
+            // Authorization: `Bearer HElloToken`
+          }
+        });
+  
+        // Assuming the API returns a response with a `data` object containing `categories`
+        return response.data.categories;
+  
+      } catch (error) {
+        // Log the error for debugging
+        console.error("Error fetching category data:", error);
+  
+        // Return a custom error message using rejectWithValue
+        return rejectWithValue(error.response?.data || "Failed to fetch category data");
+      }
+    }
+  );
 
 const CategoriSlice = createSlice({
     name:"category",

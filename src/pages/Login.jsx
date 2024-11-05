@@ -28,7 +28,7 @@ const Login = () => {
       setError('');
 
       try {
-        await axios.post('http://localhost:3000/api/auth/login',formData)
+        await axios.post('https://sys-valakkuda-projectbackend.onrender.com/api/auth/login',formData)
 
         .then((data)=>{
         if(data?.data?.status){

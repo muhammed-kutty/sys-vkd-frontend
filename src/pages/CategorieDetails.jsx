@@ -17,12 +17,13 @@ const CategorieDetails = () => {
     const [formData, setFormData] = useState({
         name: '',
       });
+
     const dispatch = useDispatch()
       useEffect(()=>{
         dispatch(fetchCategoriData(authToken))
       },[dispatch])
 
-    //   console.log("categorydetailspage;dssssssssss",categoryDetails)
+      console.log("categorydetailspage;dssssssssss",authToken)
 
       const handleChange =  (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -88,7 +89,7 @@ const CategorieDetails = () => {
         setisSubmting(true)
 
         try {
-            const responce = await axios.delete(`http://localhost:3000/api/category/${id}`,{
+            const responce = await axios.delete(`https://sys-valakkuda-projectbackend.onrender.com/api/category/${id}`,{
                 headers:{
                      Authorization:`Bearer ${authToken}`
                 }
