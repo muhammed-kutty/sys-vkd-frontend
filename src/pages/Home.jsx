@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../Constents/card'
+import Card from '../Constents/Card'
 import {IMAGES} from '../Constents/Images'
 
 const Home = () => {
