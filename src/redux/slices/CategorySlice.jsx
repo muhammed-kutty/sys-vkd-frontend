@@ -22,7 +22,7 @@ import axios from "axios";
 
 
 export const fetchCategoriData = createAsyncThunk(
-    'category/fetchData',
+    'category/fetchDatas',
     async (userToken, { rejectWithValue }) => {
         
       try {
