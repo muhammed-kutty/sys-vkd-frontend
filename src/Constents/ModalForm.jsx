@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form, Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
-const ModalForm = ({isSubmting ,FormShown, setFormShown,handlechange , handlesubmit ,formFiels ,formData , mode }) => {
+const ModalForm = ({handleClose ,name, isSubmting ,FormShown,handlechange , handlesubmit ,formFiels ,formData , mode }) => {
   // const category = useSelector(state => state.category.data)
   // console.log("vcateeeeeeeeeee",category)
 
@@ -13,7 +13,10 @@ const ModalForm = ({isSubmting ,FormShown, setFormShown,handlechange , handlesub
   // });
 
   // Toggle modal visibility
-  const handleClose = () => setFormShown(false);
+  // const handleClose = () =>{ 
+  //   setFormShown(false);
+  //   setFormdata('');
+  // }
 
   // Handle form input change
   // const handleChange = (e) => {
@@ -38,13 +41,13 @@ const ModalForm = ({isSubmting ,FormShown, setFormShown,handlechange , handlesub
             {
               formFiels && formFiels.map((item)=>(
 
-                <Form.Group className="mb-3" controlId="formName">
+                <Form.Group key={item.userID} className="mb-3" controlId="formName">
               <Form.Label>{item.label}</Form.Label>
               <Form.Control
                 type={item.type}
                 placeholder={item.placeholder}
                 name={item.name}
-                value={formData.name}
+                value={formData[item.name]}
                 onChange={handlechange}
                 />
             </Form.Group>
@@ -71,8 +74,8 @@ const ModalForm = ({isSubmting ,FormShown, setFormShown,handlechange , handlesub
         </>
       ) : (
         mode === "add"?
-        'Add Category' :
-        "Update Category"
+        `Add ${name}` :
+        ` Update ${name}`
       )} 
             </Button>
           </Form>

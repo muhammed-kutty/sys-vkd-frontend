@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../redux/slices/AuthSlice';
+import { loginApi } from '../utils/Apiservices';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -28,8 +29,8 @@ const Login = () => {
       setError('');
 
       try {
-        await axios.post('https://sys-valakkuda-projectbackend.onrender.com/api/auth/login',formData)
-
+        // await axios.post('https://sys-valakkuda-projectbackend.onrender.com/api/auth/login',formData)
+        await loginApi(formData)
         .then((data)=>{
         if(data?.data?.status){
           dispatch(login(data?.data.token))

@@ -9,10 +9,12 @@ const ComanTable = ({
   onEdit,
   onDelete,
   onCall,
-  name,
+  name, 
   loading,
   isAuth
 }) => {
+  console.log("gfffffffffffff data",data)
+
   return (
     <Table striped bordered hover responsive>
       <thead>
@@ -28,7 +30,7 @@ const ComanTable = ({
           <tr key={item.categorieID}>
             <td>{index + 1}</td>
             <td>{item.name}</td>
-            {name === 'user' && <td>{item.phone}</td>}
+            {name === 'user' && <td>{item.phone_number}</td>}
             <td>
               <Row className="g-1">
             {  
@@ -48,7 +50,7 @@ const ComanTable = ({
                     style={{width:"70px"}}
                     
                     variant="danger"
-                    onClick={() => onDelete(item.categorieID)}
+                    onClick={() => onDelete(name === 'user' ? item.userID : item.categorieID )}
                     >
                     Delete
                   </Button>

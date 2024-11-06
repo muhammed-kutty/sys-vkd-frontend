@@ -9,8 +9,8 @@ const Card = ({ data }) => {
     <Container>
       <Row className="g-4">
         {data?.map((item) => (
-          <Col key={item.id} md={4} lg={3}>
-            <Link to="/user-details" style={{ textDecoration: 'none' }}>
+          <Col key={item.categorieID} md={4} lg={3}>
+            <Link to={`/user-details/${item.categorieID}`} style={{ textDecoration: 'none' }}>
               <BootstrapCard className="text-center h-100 d-flex align-items-center">
                 <BootstrapCard.Img 
                   variant="top" 

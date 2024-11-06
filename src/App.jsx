@@ -22,6 +22,7 @@ function App() {
 
 
   useEffect(()=>{
+    dispatch(fetchCategoriData())
     dispatch(verifyToken())
   },[dispatch])
 
@@ -40,7 +41,7 @@ function App() {
             <Route path='/' element={<Home />}/>
             <Route path='/about' element={<About />}/> 
             <Route path='/contact' element={<Contact />}/> 
-            <Route path='/user-details' element={<UserDetails />}/> 
+            <Route path='/user-details/:id' element={<UserDetails />}/> 
             <Route path='/login' element={<Login />}/> 
             <Route path='/Categories' element={<CategorieDetails />}/> 
     </Routes>

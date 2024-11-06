@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { fetchCategories } from "../../utils/Apiservices";
 
 
 
@@ -28,23 +29,14 @@ export const fetchCategoriData = createAsyncThunk(
       try {
         console.log("API call in category with token:", userToken);
         
-    const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category',{
+    // const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category',{
+    // const response = await axios.get('http://localhost:3000/api/category');
 
-        // const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category', {
-          headers: {
-            Authorization: `Bearer ${userToken}`
-            // Authorization: `Bearer HElloToken`
-          }
-        });
-  
-        // Assuming the API returns a response with a `data` object containing `categories`
+    const response = await fetchCategories()
         return response.data.categories;
   
       } catch (error) {
-        // Log the error for debugging
         console.error("Error fetching category data:", error);
-  
-        // Return a custom error message using rejectWithValue
         return rejectWithValue(error.response?.data || "Failed to fetch category data");
       }
     }

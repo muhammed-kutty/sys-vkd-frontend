@@ -1,5 +1,6 @@
 import { createSlice ,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { verifyTokenApi } from "../../utils/Apiservices";
 
 
 let token_status
@@ -12,11 +13,13 @@ export const verifyToken= createAsyncThunk('auth/verifyToken',async(_,{rejectWit
         }
         console.log("api called")
         // const responce = await axios.post('http://localhost:3000/api/auth/verify',{},{
-        const responce = await axios.post('https://sys-valakkuda-projectbackend.onrender.com/api/auth/verify',{},{
-            headers:{
-                Authorization:`Bearer ${token}`
-            }
-        })
+        // const responce = await axios.post('https://sys-valakkuda-projectbackend.onrender.com/api/auth/verify',{},{
+        //     headers:{
+        //         Authorization:`Bearer ${token}`
+        //     }
+        // })
+
+        const responce = await verifyTokenApi()
         console.log("verify tokn",responce.data)
         token_status = responce.data.isValied
         return responce.data
