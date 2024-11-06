@@ -10,7 +10,7 @@ import { fetchCategoriData } from '../redux/slices/CategorySlice';
 
 const CategorieDetails = () => {
     const categoryDetails =  useSelector(state => state.category.data)
-    const authToken = useSelector(state => state.auth.userToken)
+    const {userToken , isAuthenticated} = useSelector(state => state.auth)
     const [FormShown, setFormShown] = useState(false);
     const [isSubmting, setisSubmting] = useState(false)
     const [typofForm, settypofForm] = useState("add")
@@ -20,10 +20,10 @@ const CategorieDetails = () => {
 
     const dispatch = useDispatch()
       useEffect(()=>{
-        dispatch(fetchCategoriData(authToken))
+        dispatch(fetchCategoriData(userToken))
       },[dispatch])
 
-      console.log("categorydetailspage;dssssssssss",authToken)
+      console.log("categorydetailspage;dssssssssss",userToken)
 
       const handleChange =  (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -45,14 +45,14 @@ const CategorieDetails = () => {
                 // responce = await axios.post('http://localhost:3000/api/category',formData,{
                 responce = await axios.post('https://sys-valakkuda-projectbackend.onrender.com/api/category',formData,{
                     headers:{
-                        Authorization:`Bearer ${authToken}`
+                        Authorization:`Bearer ${userToken}`
                     }
                 })
             }else{
                 // responce = await axios.put(`http://localhost:3000/api/category/${formData.id}`,formData,{
                 responce = await axios.put(`https://sys-valakkuda-projectbackend.onrender.com/api/category/${formData.id}`,formData,{
                     headers:{
-                        Authorization:`Bearer ${authToken}`
+                        Authorization:`Bearer ${userToken}`
                     }
                 })
             }
@@ -68,7 +68,7 @@ const CategorieDetails = () => {
         }
         finally{
             setisSubmting(false)
-            dispatch(fetchCategoriData(authToken))
+            dispatch(fetchCategoriData(userToken))
         }
         console.log('Form data submitted:', formData);
       };
@@ -91,7 +91,7 @@ const CategorieDetails = () => {
         try {
             const responce = await axios.delete(`https://sys-valakkuda-projectbackend.onrender.com/api/category/${id}`,{
                 headers:{
-                     Authorization:`Bearer ${authToken}`
+                     Authorization:`Bearer ${userToken}`
                 }
             })
             const {status , message} = responce.data
@@ -104,7 +104,7 @@ const CategorieDetails = () => {
         }
         finally{
             // setFormData( formData.name='')
-            dispatch(fetchCategoriData(authToken))
+            dispatch(fetchCategoriData(userToken))
             setisSubmting(false)
 
         }
@@ -148,6 +148,7 @@ const CategorieDetails = () => {
                 onDelete={handleDelete}
                 onEdit={handleEdit}
                 loading={isSubmting}
+                isAuth={isAuthenticated}
 
             />
             {/* <ToastContainer /> */}

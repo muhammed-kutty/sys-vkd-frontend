@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 const UserDetails = () => {
 
    const userDetails =  useSelector(state => state.user.data)
+   const isAuth = useSelector(state => state.auth.isAuthenticated)
 
     const [FormShown, setFormShown] = useState(false);
     // const [data, setdata] = useState([])
@@ -60,13 +61,16 @@ const UserDetails = () => {
                     <h1>User Details</h1>
                 </div>
             </div>
-            <div className="row">
+            {
+                isAuth&&
+                <div className="row">
                 <div className="col-12 d-flex justify-content-end mb-3">
                     <Link onClick={() => setFormShown(true)} className='bg-primary text-light p-2 rounded'>
                         Add User
                     </Link>
                 </div>
             </div>
+            }
      
             <ComanTable 
                 columns={columns}
@@ -75,6 +79,7 @@ const UserDetails = () => {
                 onDelete={handleDelete}
                 onEdit={handleEdit}
                 name="user"
+                isAuth={isAuth}
 
             />
         </>

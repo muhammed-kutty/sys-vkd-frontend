@@ -14,6 +14,7 @@ import { fetchCategoriData } from './redux/slices/CategorySlice'
 import { verifyToken } from './redux/slices/AuthSlice'
 
 import { ToastContainer } from 'react-toastify'
+import Loader from './Constents/Loader'
 
 function App() {
   const dispatch = useDispatch()
@@ -25,9 +26,9 @@ function App() {
   },[dispatch])
 
   if(status === 'loading'){
-    return <h1>Loading..............</h1>
+    return <Loader />
   }
-
+  
   return (
    
     <BrowserRouter>
