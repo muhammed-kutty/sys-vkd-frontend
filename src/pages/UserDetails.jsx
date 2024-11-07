@@ -19,6 +19,7 @@ const UserDetails = () => {
   const [data, setdata] = useState([]);
   const [typeofForm, settypeofForm] = useState("add");
   const [loading, setloading] = useState(false)
+  const [category, setcategory] = useState({})
 
   const [formData, setformData] = useState({});
 
@@ -48,6 +49,9 @@ const UserDetails = () => {
     try {
       const data = jsonData?.users?.filter((item)=>item.category_id == id )
         setdata(data);
+        const item = jsonData?.categories?.find(item =>item.id == id)
+        console.log("jadkbvvvvvvvvvvvvvvv",item)
+        setcategory(item)
     } catch (error) {
           toast.error(error?.response?.data?.message || error.message, {
             autoClose: 3000,
@@ -60,7 +64,6 @@ const UserDetails = () => {
   };
 
   useEffect(() => {
-    console.log("in efeetttttttttttt",id)
     fettch_data();
   }, []);
 
@@ -180,7 +183,6 @@ fettch_data()
     setFormShown(true);
   };
 
-console.log("formdataaaaaaaaaaaaaaaaaaaaaaaa",formData)
   const handleCall = (phoneNumber) => {
     // Redirect to dialer on mobile devices
     if (isMobile()) {
@@ -220,8 +222,8 @@ console.log("formdataaaaaaaaaaaaaaaaaaaaaaaa",formData)
         />
       )}
       <div className="row">
-        <div className="col-12 text-center mt-5 mb-3">
-          <h1>User Details</h1>
+        <div className="col-12 text-center text-bg-light p-2 rounded fw-bolder mt-5 mb-3">
+          <h1>{category.name}</h1>
         </div>
       </div>
       {isAuth && (
