@@ -18,11 +18,7 @@ const ComanTable = ({
 
   return (
 <>
-<div className="row d-flex ">
-<Link  to='/' className="text-center bg-primary p-3 rounded mb-4 text-light fw-bold" style={{width:"85px"}} >Home</Link
->
 
-</div>
 
     <Table className="mt-2" striped bordered hover responsive>
       <thead>

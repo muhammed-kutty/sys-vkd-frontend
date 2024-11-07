@@ -244,6 +244,12 @@ console.log("formdataaaaaaaaaaaaaaaaaaaaaaaa",formData)
         </div>
       )}
 
+<div className="row  ms-1">
+<Link  to='/' className=" text-center bg-primary p-3 rounded mb-4 text-light fw-bold" style={{width:"85px"}} >Home</Link
+>
+
+</div>
+
 {
 data.length !== 0 ?
 <ComanTable
