@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Table, Button, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const ComanTable = ({
   columns,
@@ -16,7 +17,14 @@ const ComanTable = ({
   console.log("gfffffffffffff data",data)
 
   return (
-    <Table striped bordered hover responsive>
+<>
+<div className="row d-flex ">
+<Link  to='/' className="text-center bg-primary p-3 rounded mb-4 text-light fw-bold" style={{width:"85px"}} >Home</Link
+>
+
+</div>
+
+    <Table className="mt-2" striped bordered hover responsive>
       <thead>
         <tr>
           {columns.map((col, index) => (
@@ -27,10 +35,10 @@ const ComanTable = ({
 
       <tbody className="fw-bolder">
         {data?.map((item, index) => (
-          <tr key={item.categorieID}>
+          <tr key={item.id}>
             <td>{index + 1}</td>
             <td>{item.name}</td>
-            {name === 'user' && <td>{item.phone_number}</td>}
+            {name === 'user' && <td>{item.phone}</td>}
             <td>
               <Row className="g-1">
             {  
@@ -62,7 +70,7 @@ const ComanTable = ({
                     <Button
                     style={{width:"70px"}}
 
-                      variant="success"
+                    variant="success"
                       onClick={() => onCall(item.phone)}
                     >
                       Call
@@ -75,6 +83,7 @@ const ComanTable = ({
         ))}
       </tbody>
     </Table>
+      </>
   );
 };
 

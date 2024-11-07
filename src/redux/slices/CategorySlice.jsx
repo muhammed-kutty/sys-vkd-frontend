@@ -1,39 +1,40 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { fetchCategories } from "../../utils/Apiservices";
+import jsonData from '../../Constents/data/data.json'
 
 
 
 
 
-// export const fetchCategoriData = createAsyncThunk('category/fetchData', async (userToken, { rejectWithValue }) => {
-//     console.log("api calle in category",userToken)
-//     // const response = await axios.get('http://localhost:3000/api/category',{
-//     const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category',{
-//         headers:{
-//             Authorization:`Bearer ${userToken}`
-//        }
-//     });
 
 
-//     return response.data.categories
-// ;
- 
-//   });
+// export const fetchCategoriData = createAsyncThunk(
+//     'category/fetchDatas',
+//     async (userToken, { rejectWithValue }) => {
+        
+//       try {
+//         console.log("API call in category with token:", userToken);
+        
+//     // const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category',{
+//     // const response = await axios.get('http://localhost:3000/api/category');
 
+//     const response = await fetchCategories()
+//         return response.data.categories;
+  
+//       } catch (error) {
+//         console.error("Error fetching category data:", error);
+//         return rejectWithValue(error.response?.data || "Failed to fetch category data");
+//       }
+//     }
+//   );
 
 export const fetchCategoriData = createAsyncThunk(
     'category/fetchDatas',
-    async (userToken, { rejectWithValue }) => {
+    async (_, { rejectWithValue }) => {
         
       try {
-        console.log("API call in category with token:", userToken);
-        
-    // const response = await axios.get('https://sys-valakkuda-projectbackend.onrender.com/api/category',{
-    // const response = await axios.get('http://localhost:3000/api/category');
-
-    const response = await fetchCategories()
-        return response.data.categories;
+        return jsonData.categories
   
       } catch (error) {
         console.error("Error fetching category data:", error);
@@ -41,6 +42,7 @@ export const fetchCategoriData = createAsyncThunk(
       }
     }
   );
+
 
 const CategoriSlice = createSlice({
     name:"category",

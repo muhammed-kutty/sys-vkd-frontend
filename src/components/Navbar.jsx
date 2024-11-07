@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/slices/AuthSlice";
+import { IMAGES } from "../Constents/Images";
 
 const CustomNavbar = () => {
   const [navExpand, setnavExpand] = useState(false)
@@ -27,9 +28,9 @@ const CustomNavbar = () => {
       <Container>
         <Link className="navbar-brand" to="/">
           <img
-            src="https://sysonline.in/assets/metro/assets/media/logos/logo-letter.png"
+            src={IMAGES.LOGO}
             alt="SYS"
-            style={{ width: "70px" }}
+            style={{ width: "50px" ,borderRadius:"50px", display:"flex", alignItems:"center", justifyContent:"center" }}
           />
         </Link>
         <Navbar.Toggle aria-controls="navbar-nav"

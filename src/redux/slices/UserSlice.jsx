@@ -1,12 +1,15 @@
 import {createSlice , createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
+import jsonData from '../../Constents/data/data.json'
 
 export const fetchUserData = createAsyncThunk('user/fetchData', async () => {
-    // const response = await axios.get('/api/your-endpoint');
-    // return response.data;
-
-        console.log("Hello usererrrrrrrrrrrrrrrrrsssssss")
-    return 'hello Userdfdfdsfsfsdd'
+    try {
+        return jsonData.categories
+  
+      } catch (error) {
+        console.error("Error fetching category data:", error);
+        return rejectWithValue(error.response?.data || "Failed to fetch category data");
+      }
   });
 
 

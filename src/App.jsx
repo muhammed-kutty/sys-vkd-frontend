@@ -23,7 +23,7 @@ function App() {
 
   useEffect(()=>{
     dispatch(fetchCategoriData())
-    dispatch(verifyToken())
+    // dispatch(verifyToken())
   },[dispatch])
 
   if(status === 'loading'){

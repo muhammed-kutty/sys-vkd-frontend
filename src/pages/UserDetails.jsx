@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Loader from '../Constents/Loader'
 import { addUser, deleteUser, fetchUserbyCatID, updateUser } from "../utils/Apiservices";
 import { Col, Row } from "react-bootstrap";
+import jsonData from '../Constents/data/data.json'
 
 const UserDetails = () => {
   const { id } = useParams();
@@ -21,17 +22,33 @@ const UserDetails = () => {
 
   const [formData, setformData] = useState({});
 
+  // const fettch_data = async () => {
+  //     setloading(true)
+  //   try {
+  //   const res = await fetchUserbyCatID(id);
+  //   console.log("responce====", res);
+  //       setdata(res.data.data);
+  //   } catch (error) {
+  //       console.log(
+  //           "Categoruy form submiting error",
+  //           error?.response?.data?.message
+  //         );
+  //         toast.error(error?.response?.data?.message || error.message, {
+  //           autoClose: 3000,
+  //         });
+  //       } finally {
+  //        setloading(false)
+  //         // dispatch(fetchUserbyCatID(id))
+  //       }
+    
+  // };
+
   const fettch_data = async () => {
       setloading(true)
     try {
-    const res = await fetchUserbyCatID(id);
-    console.log("responce====", res);
-        setdata(res.data.data);
+      const data = jsonData?.users?.filter((item)=>item.category_id == id )
+        setdata(data);
     } catch (error) {
-        console.log(
-            "Categoruy form submiting error",
-            error?.response?.data?.message
-          );
           toast.error(error?.response?.data?.message || error.message, {
             autoClose: 3000,
           });
@@ -43,6 +60,7 @@ const UserDetails = () => {
   };
 
   useEffect(() => {
+    console.log("in efeetttttttttttt",id)
     fettch_data();
   }, []);
 
