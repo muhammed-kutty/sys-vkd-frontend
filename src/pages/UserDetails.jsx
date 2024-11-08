@@ -246,7 +246,7 @@ fettch_data()
         </div>
       )}
 
-<div className="row  ms-1">
+<div className="row custm_anim ms-1">
 <Link  to='/' className=" text-center bg-primary p-3 rounded mb-4 text-light fw-bold" style={{width:"85px"}} >Home</Link
 >
 
@@ -254,6 +254,8 @@ fettch_data()
 
 {
 data.length !== 0 ?
+<div className="custm_anim">
+
 <ComanTable
         columns={columns}
         data={data}
@@ -263,10 +265,11 @@ data.length !== 0 ?
         name="user"
         isAuth={isAuth}
         />
+ </div>
         :
         !loading && 
         <Row >
-            <Col className="text-center">
+            <Col className="text-center custm_anim">
             <span className="text-bg-danger fs-4 p-2 rounded fw-bolder"><strong>No Users In this category </strong></span>
             </Col>
         </Row>
