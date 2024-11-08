@@ -51,7 +51,8 @@
       { "id": 32, "name": "പള്ളി", "phone": "", "category_id": 22 },
       { "id": 34, "name": "ട്യൂഷൻ സെന്റർ", "phone": "", "category_id": 22 },
       { "id": 35, "name": "SYS സാന്ത്വനം", "phone": "", "category_id": 22 },
-      { "id": 36, "name": "ഖിദ്മ സെന്റർ", "phone": "", "category_id": 22 }
+      { "id": 36, "name": "ഖിദ്മ സെന്റർ", "phone": "", "category_id": 22 },
+      {"id":18, "name":"hooo", "phone":"1234455","category_id": 18}
     ]
   }
   
