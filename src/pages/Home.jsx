@@ -15,15 +15,16 @@ const Home = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting ) {
           entry.target.classList.add('in-viewport');
-          // setLoadedCount(prevCount => prevCount + 1)
+          setLoadedCount(prevCount => prevCount + 1)
+        }else{
+          entry.target.classList.remove('in-viewport');
+
         }
       });
     });
 
     // Observe each card when it's rendered
     cardRefs.current.forEach(target => observer.observe(target));
-
-   
 
     return () => {
       cardRefs.current.forEach(target => {

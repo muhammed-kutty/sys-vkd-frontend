@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from '../Constents/Loader'
 import { addUser, deleteUser, fetchUserbyCatID, updateUser } from "../utils/Apiservices";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import jsonData from '../Constents/data/data.json'
 
 const UserDetails = () => {
@@ -20,6 +20,9 @@ const UserDetails = () => {
   const [typeofForm, settypeofForm] = useState("add");
   const [loading, setloading] = useState(false)
   const [category, setcategory] = useState({})
+  const [filterdData, setfilterdData] = useState([])
+
+  const [searchKeyword, setsearchKeyword] = useState('')
 
   const [formData, setformData] = useState({});
 
@@ -203,6 +206,39 @@ fettch_data()
     setformData("");
   };
 
+  const handlesearch = (e)=>{
+    const {value} = e.target
+    console.log("changeeeeeeeeee",value)
+    setsearchKeyword(value)
+  }
+
+  const searchData = () => {
+
+    
+    const keyword = (typeof searchKeyword === 'string' ? searchKeyword : '').toLowerCase();
+    if (!keyword) {
+      setfilterdData(data); // full data list
+      return;
+    }
+  
+    const results = data.filter((item) =>
+      item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+      item.eng_name.toLowerCase().includes(keyword.toLowerCase())
+    );
+    setfilterdData(results);
+  };
+  
+  const search_handlesubmit = (e)=>{
+    e.preventDefault();
+    searchData()
+
+  }
+
+  useEffect(()=>{
+    console.log("search useeffect")
+      searchData()
+  },[data  , searchKeyword])
+
   return (
     <>
     
@@ -246,11 +282,48 @@ fettch_data()
         </div>
       )}
 
-<div className="row custm_anim ms-1">
+{/* <div className="row custm_anim ms-1 d-flex justify-content-around align-items-center">
+  <div>
+
 <Link  to='/' className=" text-center bg-primary p-3 rounded mb-4 text-light fw-bold" style={{width:"85px"}} >Home</Link
 >
+  </div>
+  <div>
 
+  <Form style={{width:""}} className="w-25 d-flex ms-3">
+
+<Col xs="auto" className="">
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              className=" mr-sm-2"
+              />
+          </Col>
+          <Col xs="auto" className="ms-2">
+            <Button type="submit">Submit</Button>
+          </Col>
+              </Form>
+              </div>
+
+</div> */}
+<div className="row custm_anim ms-1 d-flex justify-content-between w-100">
+  <div className="d-flex " style={{width:"40%"}}>
+    <Link to="/" className="text-center bg-primary p-3 rounded text-light fw-bold" style={{ width: "85px" }}>
+      Home
+    </Link>
+  </div>
+  <div className="d-flex justify-content-end " style={{width:"40%"}}>
+    <Form className="d-flex" onSubmit={search_handlesubmit}>
+      <Col xs="auto">
+        <Form.Control type="text"  value={searchKeyword} placeholder="Search" onChange={handlesearch} />
+      </Col>
+      <Col xs="auto" className="ms-2">
+        <Button type="submit" variant="secondary">Search</Button>
+      </Col>
+    </Form>
+  </div>
 </div>
+
 
 {
 data.length !== 0 ?
@@ -258,7 +331,7 @@ data.length !== 0 ?
 
 <ComanTable
         columns={columns}
-        data={data}
+        data={filterdData.length !== 0 ? filterdData : data}
         onCall={handleCall}
         onDelete={handleDelete}
         onEdit={handleEdit}
