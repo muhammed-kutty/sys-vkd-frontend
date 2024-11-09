@@ -15,6 +15,7 @@ import { verifyToken } from './redux/slices/AuthSlice'
 
 import { ToastContainer } from 'react-toastify'
 import Loader from './Constents/Loader'
+import ScrollToTop from './Constents/ScrollTop'
 
 function App() {
   const dispatch = useDispatch()
@@ -33,6 +34,7 @@ function App() {
   return (
    
     <BrowserRouter>
+    <ScrollToTop />
       <div className="app d-flex flex-column ">
         <div>
 
