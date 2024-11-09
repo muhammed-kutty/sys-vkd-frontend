@@ -18,10 +18,11 @@ const ComanTable = ({
   return (
 <>
 
+    <div className="container">
 
-    <Table className="mt-2" striped bordered hover responsive>
-      <thead>
-        <tr>
+    <Table className="custom_table"  striped bordered hover responsive >
+      <thead  >
+        <tr >
           {columns.map((col, index) => (
             <th key={index}>{col.header}</th>
           ))}
@@ -64,10 +65,10 @@ const ComanTable = ({
                   <Col xs="auto">
                     <Button
                     style={{width:"70px"}}
-
+                    
                     variant="success"
                       onClick={() => onCall(item.phone)}
-                    >
+                      >
                       Call
                     </Button>
                   </Col>
@@ -78,6 +79,7 @@ const ComanTable = ({
         ))}
       </tbody>
     </Table>
+                </div>
       </>
   );
 };

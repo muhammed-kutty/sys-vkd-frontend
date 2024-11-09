@@ -12,6 +12,44 @@ const CustomNavbar = () => {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
+  const websiteUrl = window.location.href;
+
+
+  const handleShare = () => {
+    // Open a new popup window with share options
+    const shareWindow = window.open(
+      '', // Blank URL, as we will dynamically populate the content
+      'Share',
+      'width=600,height=400'
+    );
+
+    // Write the HTML content for the share popup
+    shareWindow.document.write(`
+      <html>
+        <head>
+          <title>Share this Page</title>
+        </head>
+        <body>
+          <h2>Share this page</h2>
+          <ul style="list-style-type: none; padding: 0;">
+            <li><a href="https://wa.me/?text=${encodeURIComponent(websiteUrl)}" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
+            <li><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(websiteUrl)}" target="_blank"><i class="bi bi-facebook"></i> Facebook</a></li>
+            <li><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(websiteUrl)}" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+            <li><a href="mailto:?subject=Check%20this%20out&body=${encodeURIComponent(websiteUrl)}" target="_blank"><i class="bi bi-envelope"></i> Email</a></li>
+          </ul>
+          <button onclick="window.close()">Close</button>
+        </body>
+      </html>
+    `);
+
+    // Close the popup after 10 seconds
+    setTimeout(() => {
+      if (!shareWindow.closed) {
+        shareWindow.close();
+      }
+    }, 10000);
+  };
+
 
   const handleLogut = () => {
     dispatch(logout())
@@ -38,6 +76,12 @@ const CustomNavbar = () => {
           />
         <Navbar.Collapse id="navbar-nav" className=" navtoogle">
           <Nav className="ms-auto">
+            <Nav.Link as={Link} onClick={handleShare} to="/" aria-current="page">
+        
+      <i className="bi bi-share"></i> {/* Bootstrap share icon */}
+      Share
+   
+            </Nav.Link>
             <Nav.Link as={Link} onClick={handleLinkClick} to="/" aria-current="page">
               Home
             </Nav.Link>

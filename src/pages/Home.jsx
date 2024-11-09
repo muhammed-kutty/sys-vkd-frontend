@@ -42,7 +42,7 @@ const Home = () => {
         <Slider />
       </div>
       <div className='text-center mb-4 home-container pt-1 d-flex align-items-center justify-content-center'>
-        <h1 className='text-dark bg-light w-25 rounded' style={{fontFamily:"Faculty Glyphic, sans-serif" , fontWeight:"900"}}>Contact Details</h1> 
+        <h1 className='text-dark bg-light w-50 rounded' style={{fontFamily:"Faculty Glyphic, sans-serif" , fontWeight:"900"}}>Contact Details</h1> 
       </div>
        <Container>
 

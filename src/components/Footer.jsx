@@ -40,7 +40,7 @@ const Footer = () => {
               <Nav.Link href="https://www.instagram.com" target="_blank" className="text-light">
                 <FaInstagram size={30} color='black' />
               </Nav.Link>
-              <Nav.Link href="https://www.whatapp.com" target="_blank" className="text-light">
+              <Nav.Link href="https://wa.me/9526137176?text=Hello%20there!" target="_blank" className="text-light">
                 <FaWhatsapp size={30} color='black' />
               </Nav.Link>
             </Nav>

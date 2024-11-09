@@ -1,10 +1,13 @@
 
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card as BootstrapCard, Row, Col, Container } from 'react-bootstrap';
 import {useInView} from 'react-intersection-observer'
 
-const Card = ({ item  , cardRefs , indx}) => {
+const Card = ({ item  , cardRefs , indx }) => {
+
+  const navigate = useNavigate()
+
 
 //  const [isInviw, setisInviw] = useState(false)
 
@@ -25,13 +28,18 @@ const Card = ({ item  , cardRefs , indx}) => {
 //       if(target) observer.unobserve(target)
 //     }
 //  },[])
+
+const handleClick = (id)=>{
+  navigate(`/user-details/${id}`)
+}
+
   return (
     <>
           {/* <Col key={item.id} md={6} lg={3} className={`animated_card ${isInviw ? 'in-viewport' : ''}`}> */}
            
             <Col md={6} lg={3}  key={item.id}  ref={(el) => cardRefs.current[indx] = el} className="animated-card" >
-            <Link to={`/user-details/${item.id}`} style={{ textDecoration: 'none' }}>
-              <BootstrapCard className="text-center h-100 d-flex align-items-center">
+            {/* <Link to={`/user-details/${item.id}`} style={{ textDecoration: 'none' }}> */}
+              <BootstrapCard className="text-center h-100 d-flex align-items-center"  onClick={()=>handleClick(item.id)}>
                 <BootstrapCard.Img 
                   variant="top" 
                   src={item.img} 
@@ -44,7 +52,7 @@ const Card = ({ item  , cardRefs , indx}) => {
                   </BootstrapCard.Title>
                 </BootstrapCard.Body>
               </BootstrapCard>
-            </Link>
+            {/* </Link> */}
           </Col>
                   </>
   );

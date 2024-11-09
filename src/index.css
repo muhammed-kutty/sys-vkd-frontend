@@ -257,4 +257,12 @@ footer{
 .spclcontainer{
   max-width: 1300px !important;
   margin: auto;
+  min-height: 80vh;
 }
+
+
+.custom_table{
+  background-color: transparent !important;
+  margin-top: 30px;
+}
+

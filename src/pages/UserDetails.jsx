@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ModalForm from "../Constents/ModalForm";
 import ComanTable from "../Constents/ComanTable";
 import { useSelector } from "react-redux";
@@ -243,6 +243,7 @@ const UserDetails = () => {
     searchData();
   }, [data, searchKeyword]);
 
+
   return (
     <div className="spclcontainer">
       {FormShown && (
@@ -310,17 +311,17 @@ const UserDetails = () => {
 
 </div> */}
       <div className="row  ms-1 d-flex justify-content-between w-100">
-        <div className="d-flex custm_anim" style={{ width: "40%" }}>
+        <div className="d-flex custm_animTop" style={{ width: "40%" }}>
           <Col xs={6} md={4} className="d-flex justify-content-start">
             <Link
               to="/"
-              className="text-center bg-primary p-3 rounded text-light fw-bold"
+              className="text-center bg-primary rounded text-light fw-bold p-3" 
             >
               Home
             </Link>
           </Col>
         </div>
-        <div className="d-flex custm_animright justify-content-end " style={{ width: "55%" }}>
+        <div className="d-flex custm_animTop justify-content-end " style={{ width: "55%" }}>
           <Col
             xs={12}
             md={6}
@@ -334,7 +335,7 @@ const UserDetails = () => {
                 onChange={handlesearch}
                 className="me-2 w-100"
               />
-              <Button type="submit" variant="secondary">
+              <Button type="submit" variant="primary">
                 Search
               </Button>
             </Form>
@@ -343,7 +344,7 @@ const UserDetails = () => {
       </div>
 
       {data.length !== 0 ? (
-        <div className="custm_animBtm">
+        <div className="custm_animTop">
           <ComanTable
             columns={columns}
             data={filterdData.length !== 0 ? filterdData : data}
@@ -357,7 +358,7 @@ const UserDetails = () => {
       ) : (
         !loading && (
           <Row>
-            <Col className="text-center custm_anim">
+            <Col className="text-center custm_animTop mt-5">
               <span className="text-bg-danger fs-4 p-2 rounded fw-bolder">
                 <strong>No Users In this category </strong>
               </span>
