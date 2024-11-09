@@ -140,3 +140,23 @@ footer{
 
 }
 
+.footer_text{
+  display: inline-block;
+  font-weight: 900;
+  /* background: linear-gradient(to right,red, green); */
+  
+  /* -webkit-background-clip: text;  */
+  /* color: transparent; */
+  /* WebkitBackgroundClip: 'text'
+  color: 'transparent' */
+
+}
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/fonts/Bauhaus-Heavy Regular.ttf') format('ttf'),
+       url('/fonts/my-custom-font.woff') format('woff'),
+       url('/fonts/my-custom-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
