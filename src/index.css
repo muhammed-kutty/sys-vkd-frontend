@@ -13,19 +13,19 @@
 }
 
 html , body{
-  /* background-color: #f4f4f4 !important; */
+  background-color: #f4f4f4 !important; 
  
   margin: 0;
   display: flex;
   flex-direction: column; /* Stack items vertically */
 }
 .main{
-  background-image: url('/images/BAGCIMG.jpg');
+  /*background-image: url('/images/BAGCIMG.jpg');
   background-size: cover;          
-  background-position: center;      /* Center the image */
+  background-position: center;     
   background-repeat: no-repeat;   
   background-attachment: fixed;
-  padding-bottom: 40px;
+  padding-bottom: 40px;*/
 }
 
 /* main{
