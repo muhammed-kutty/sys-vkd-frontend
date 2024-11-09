@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Noto+Sans+Malayalam:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 *{
   padding: 0;
   margin: 0;
@@ -11,11 +13,19 @@
 }
 
 html , body{
-  background-color: #f4f4f4 !important;
-  /* height: 100%; */
+  /* background-color: #f4f4f4 !important; */
+ 
   margin: 0;
   display: flex;
   flex-direction: column; /* Stack items vertically */
+}
+.main{
+  background-image: url('/images/BAGCIMG.jpg');
+  background-size: cover;          
+  background-position: center;      /* Center the image */
+  background-repeat: no-repeat;   
+  background-attachment: fixed;
+  padding-bottom: 40px;
 }
 
 /* main{
@@ -31,10 +41,8 @@ a{
 
 .main_container{
   height: 100vh;
-  max-width: 1300px;
+  max-width: 1300px !important;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .navbar{
@@ -105,6 +113,8 @@ footer{
 
 
 
+
+
 @keyframes slideFromLeft {
   0% {
     transform: translateX(-100%); /* Start off-screen to the left */
@@ -117,6 +127,47 @@ footer{
   100% {
     transform: translateX(0); /* End at the center of the screen */
     opacity: 1; /* Stay fully visible */
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Start invisible */
+  }
+  50% {
+    transform: translateX(-20%); /* Move close to center */
+    opacity: 1; /* Start to become visible */
+  }
+  100% {
+    transform: translateX(0); /* End at the center of the screen */
+    opacity: 1; /* Stay fully visible */
+  }
+}
+
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%); /* Start off-screen above */
+    opacity: 0; /* Start invisible */
+  }
+  50% {
+    transform: translateY(20%); /* Move close to center */
+    opacity: 1; /* Make visible */
+  }
+  100% {
+    transform: translateY(0); /* End at the center of the screen */
+    opacity: 1; /* Stay fully visible */
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100%); /* Start off-screen below */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    transform: translateY(0); /* End at the normal position (center of the screen) */
+    opacity: 1; /* Fully visible */
   }
 }
 
@@ -140,6 +191,20 @@ footer{
 
 }
 
+.custm_animright{
+  animation: slideFromRight 2s ease-out forwards; /* Apply the animation when in view */
+
+}
+
+.custm_animTop{
+  animation: slideFromTop 2s ease-out forwards; /* Apply the animation when in view */
+
+}
+.custm_animBtm{
+  animation: slideFromBottom 2s ease-out forwards; /* Apply the animation when in view */
+
+}
+
 .footer_text{
   display: inline-block;
   font-weight: 900;
@@ -159,4 +224,37 @@ footer{
        url('/fonts/my-custom-font.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+
+.sliderimg{
+    width: 100%;      /* Full width */
+    height: 80vh;    /* Custom height */
+    object-fit: cover;
+    /* transform: translate(10px, 20px); */
+  
+}
+
+.slider_main{
+  height: 90vh;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .slider_main , .sliderimg {
+    height: 50vh;
+    margin-bottom: 70px;
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 576px) {
+  .slider_main  , .sliderimg{
+    height: 50vh; /* Adjust height for mobile screens */
+  }
+}
+
+.spclcontainer{
+  max-width: 1300px !important;
+  margin: auto;
 }

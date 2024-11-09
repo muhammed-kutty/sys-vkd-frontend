@@ -14,7 +14,6 @@ const ComanTable = ({
   loading,
   isAuth
 }) => {
-  console.log("gfffffffffffff data",data)
 
   return (
 <>

@@ -33,9 +33,12 @@ function App() {
   return (
    
     <BrowserRouter>
-      <div className="app d-flex flex-column min-vh-100 ">
+      <div className="app d-flex flex-column ">
+        <div>
+
       <Navbar />
-      <div className="container flex-grow-1 ">
+        </div>
+      <div className="main flex-grow-1 ">
         <div className="row">
     <Routes>
             <Route path='/' element={<Home />}/>

@@ -21,7 +21,7 @@ import { FaFacebook, FaTwitter, FaWhatsapp, FaGithub ,FaInstagram} from 'react-i
 
 const Footer = () => {
   return (
-    <footer className=" text-dark py-4 h-50 mt-5" style={{backgroundColor:"#e1f0df"}}>
+    <footer className=" text-dark py-4 h-50" style={{backgroundColor:"#e1f0df" }}>
       <Container>
         <Row>
           <Col md={6}>

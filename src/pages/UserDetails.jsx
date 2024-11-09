@@ -244,7 +244,7 @@ const UserDetails = () => {
   }, [data, searchKeyword]);
 
   return (
-    <>
+    <div className="spclcontainer">
       {FormShown && (
         <ModalForm
           isSubmting={issubmiting}
@@ -260,9 +260,9 @@ const UserDetails = () => {
           FormShown={FormShown}
         />
       )}
-      <div className="row">
-        <div className="col-12 text-center text-bg-light p-2 rounded fw-bolder mt-5 mb-3">
-          <h1>{category.name}</h1>
+      <div className="row custm_animTop d-flex justify-content-center ">
+        <div className="col-12 text-center  text-bg-light w-50 p-2 rounded fw-bolder mt-5 mb-3">
+          <h1 className="">{category.name}</h1>
         </div>
       </div>
       {isAuth && (
@@ -309,8 +309,8 @@ const UserDetails = () => {
               </div>
 
 </div> */}
-      <div className="row custm_anim ms-1 d-flex justify-content-between w-100">
-        <div className="d-flex " style={{ width: "40%" }}>
+      <div className="row  ms-1 d-flex justify-content-between w-100">
+        <div className="d-flex custm_anim" style={{ width: "40%" }}>
           <Col xs={6} md={4} className="d-flex justify-content-start">
             <Link
               to="/"
@@ -320,7 +320,7 @@ const UserDetails = () => {
             </Link>
           </Col>
         </div>
-        <div className="d-flex justify-content-end " style={{ width: "55%" }}>
+        <div className="d-flex custm_animright justify-content-end " style={{ width: "55%" }}>
           <Col
             xs={12}
             md={6}
@@ -343,7 +343,7 @@ const UserDetails = () => {
       </div>
 
       {data.length !== 0 ? (
-        <div className="custm_anim">
+        <div className="custm_animBtm">
           <ComanTable
             columns={columns}
             data={filterdData.length !== 0 ? filterdData : data}
@@ -367,7 +367,7 @@ const UserDetails = () => {
       )}
 
       {loading && <Loader />}
-    </>
+    </div>
   );
 };
 
