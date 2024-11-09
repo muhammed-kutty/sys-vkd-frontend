@@ -308,19 +308,28 @@ fettch_data()
 </div> */}
 <div className="row custm_anim ms-1 d-flex justify-content-between w-100">
   <div className="d-flex " style={{width:"40%"}}>
-    <Link to="/" className="text-center bg-primary p-3 rounded text-light fw-bold" style={{ width: "85px" }}>
-      Home
-    </Link>
+  <Col xs={6} md={4} className="d-flex justify-content-start">
+          <Link to="/" className="text-center bg-primary p-3 rounded text-light fw-bold" >
+            Home
+          </Link>
+          </Col>
   </div>
-  <div className="d-flex justify-content-end " style={{width:"40%"}}>
-    <Form className="d-flex" onSubmit={search_handlesubmit}>
-      <Col xs="auto">
-        <Form.Control type="text"  value={searchKeyword} placeholder="Search" onChange={handlesearch} />
-      </Col>
-      <Col xs="auto" className="ms-2">
-        <Button type="submit" variant="secondary">Search</Button>
-      </Col>
-    </Form>
+  <div className="d-flex justify-content-end " style={{width:"55%"}}>
+  <Col xs={12} md={6} className="d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
+          <Form className="d-flex w-100" onSubmit={search_handlesubmit}>
+            <Form.Control
+            
+              type="text"
+              value={searchKeyword}
+              placeholder="Search"
+              onChange={handlesearch}
+              className="me-2 w-100"
+            />
+            <Button type="submit" variant="secondary">
+              Search
+            </Button>
+          </Form>
+        </Col>
   </div>
 </div>
 
