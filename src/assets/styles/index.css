@@ -13,22 +13,18 @@
 }
 
 html , body{
-  /* background: linear-gradient(120deg, #ffffff, #fdf4e3, #f9e6a9); */
-  /* background: linear-gradient(120deg, #ef0644, #64d105); */
-
+  /* background-color: #f4f4f4 !important; */
  
   margin: 0;
   display: flex;
   flex-direction: column; /* Stack items vertically */
 }
 .main{
-  /* background-image: url('/images/BAGCIMG.jpg');
+  background-image: url('/images/BAGCIMG.jpg');
   background-size: cover;          
-  background-position: center;   
+  background-position: center;      /* Center the image */
   background-repeat: no-repeat;   
   background-attachment: fixed;
-  padding-bottom: 40px; */
-  background-color: #f4f4f4 !important;
   padding-bottom: 40px;
 }
 
