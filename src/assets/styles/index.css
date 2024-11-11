@@ -13,18 +13,22 @@
 }
 
 html , body{
-  /* background-color: #f4f4f4 !important; */
+  /* background: linear-gradient(120deg, #ffffff, #fdf4e3, #f9e6a9); */
+  /* background: linear-gradient(120deg, #ef0644, #64d105); */
+
  
   margin: 0;
   display: flex;
   flex-direction: column; /* Stack items vertically */
 }
 .main{
-  background-image: url('/images/BAGCIMG.jpg');
+  /* background-image: url('/images/BAGCIMG.jpg');
   background-size: cover;          
-  background-position: center;      /* Center the image */
+  background-position: center;   
   background-repeat: no-repeat;   
   background-attachment: fixed;
+  padding-bottom: 40px; */
+  background-color: #f4f4f4 !important;
   padding-bottom: 40px;
 }
 
@@ -249,6 +253,275 @@ footer{
     height: 80vh;    /* Custom height */
     object-fit: cover;
 
+    /* transform: translate(10px, 20px); */
+  
+}
+
+.slider_main{
+  height: 90vh;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .slider_main , .sliderimg {
+    height: 50vh;
+    margin-bottom: 70px;
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 576px) {
+  .slider_main  , .sliderimg{
+    height: 50vh; /* Adjust height for mobile screens */
+  }
+}
+
+.spclcontainer{
+  max-width: 1300px !important;
+  margin: auto;
+  min-height: 80vh;
+}
+
+
+.custom_table{
+  background-color: transparent !important;
+  margin-top: 30px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Noto+Sans+Malayalam:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-family: "Noto Sans Malayalam", sans-serif;
+}
+
+html , body{
+  background-color: #f4f4f4 !important; 
+ 
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+.main{
+  /*background-image: url('/images/BAGCIMG.jpg');
+  background-size: cover;          
+  background-position: center;     
+  background-repeat: no-repeat;   
+  background-attachment: fixed;
+  padding-bottom: 40px;*/
+}
+
+/* main{
+  flex:1;
+} */
+
+a{
+  text-decoration: none !important;
+  color: #FFFFFF;
+  list-style:none;
+}
+
+
+.main_container{
+  height: 100vh;
+  max-width: 1300px !important;
+  margin: 0 auto;
+}
+
+.navbar{
+  box-shadow: 2px 2px 5px gray ;
+/* background-color: #827aec; */
+background-color: #FFFFFF;
+height: 65px;
+position: fixed;
+width: 100%;
+top: 0;
+left: 0;
+z-index: 10000;
+transition: background-color 0.3s; 
+}
+
+.nav-link{
+  color: #000000;
+}
+
+.nav-item:hover{
+background-color: rgb(224, 219, 219);
+border-radius: 8px;
+padding: 0px 10px 0px 10px;
+  /* color: #FFFFFF; */
+}
+.nav-link a:hover{
+  color: #FFFFFF;
+}
+
+/*  */
+footer{
+  height: 60px;
+}
+
+.card{
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 1px 1px 6px rgb(221, 220, 220) ;
+  transition: transform 0.3s ease;
+}
+
+.card:hover{
+  transform: scale(1.1); 
+}
+
+
+@media (max-width:980px) {
+  
+  .navtoogle{
+    background-color: #fbf8f8;
+    position: absolute;
+    width: 100%;
+    top: 65px;
+    left: 0;
+    padding-left: 30px;
+  }
+  
+  
+  .navbar-light .nav-link:hover {
+    background-color: #a0b49e;
+    padding-left: 10px;
+    color: #FFFFFF !important; 
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+}
+
+
+
+
+
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0; /* Start invisible */
+  }
+  50% {
+    transform: translateX(20%); /* Move close to center */
+    opacity: 1; /* Make visible */
+  }
+  100% {
+    transform: translateX(0); /* End at the center of the screen */
+    opacity: 1; /* Stay fully visible */
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Start invisible */
+  }
+  50% {
+    transform: translateX(-20%); /* Move close to center */
+    opacity: 1; /* Start to become visible */
+  }
+  100% {
+    transform: translateX(0); /* End at the center of the screen */
+    opacity: 1; /* Stay fully visible */
+  }
+}
+
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%); /* Start off-screen above */
+    opacity: 0; /* Start invisible */
+  }
+  50% {
+    transform: translateY(20%); /* Move close to center */
+    opacity: 1; /* Make visible */
+  }
+  100% {
+    transform: translateY(0); /* End at the center of the screen */
+    opacity: 1; /* Stay fully visible */
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100%); /* Start off-screen below */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    transform: translateY(0); /* End at the normal position (center of the screen) */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+
+.animated_card {
+  /* width: 300px; */
+  /* height: 200px; */
+  border-radius: 20px;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(50px); /* Start below the screen */
+  transition: opacity 1s, transform 1s; /* Smooth transition */
+}
+
+
+.in-viewport  {
+  animation: slideFromLeft 2s ease-out forwards; /* Apply the animation when in view */
+}
+
+.custm_anim{
+  animation: slideFromLeft 2s ease-out forwards; /* Apply the animation when in view */
+
+}
+
+.custm_animright{
+  animation: slideFromRight 2s ease-out forwards; /* Apply the animation when in view */
+
+}
+
+.custm_animTop{
+  animation: slideFromTop 2s ease-out forwards; /* Apply the animation when in view */
+
+}
+.custm_animBtm{
+  animation: slideFromBottom 2s ease-out forwards; /* Apply the animation when in view */
+
+}
+
+.footer_text{
+  display: inline-block;
+  font-weight: 900;
+  /* background: linear-gradient(to right,red, green); */
+  
+  /* -webkit-background-clip: text;  */
+  /* color: transparent; */
+  /* WebkitBackgroundClip: 'text'
+  color: 'transparent' */
+
+}
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/fonts/Bauhaus-Heavy Regular.ttf') format('ttf'),
+       url('/fonts/my-custom-font.woff') format('woff'),
+       url('/fonts/my-custom-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.sliderimg{
+    width: 100%;      /* Full width */
+    height: 80vh;    /* Custom height */
+    object-fit: cover;
     /* transform: translate(10px, 20px); */
   
 }
