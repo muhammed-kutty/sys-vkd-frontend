@@ -1,10 +1,10 @@
 
 
 import React, { useEffect, useRef, useState } from 'react';
-import Card from '../Constents/Card'
+import Card from '../components/Card'
 import { useSelector } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
-import Slider from '../Constents/Slider';
+import Slider from '../components/Slider';
 
 const Home = () => {
   const { data } = useSelector(state => state.category);

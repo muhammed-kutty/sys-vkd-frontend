@@ -37,14 +37,15 @@ const handleClick = (id)=>{
     <>
           {/* <Col key={item.id} md={6} lg={3} className={`animated_card ${isInviw ? 'in-viewport' : ''}`}> */}
            
-            <Col md={6} lg={3}  key={item.id}  ref={(el) => cardRefs.current[indx] = el} className="animated-card" >
+            <Col md={6} lg={3}  key={item.id}  ref={(el) => cardRefs.current[indx] = el} className="animated-card " >
             {/* <Link to={`/user-details/${item.id}`} style={{ textDecoration: 'none' }}> */}
               <BootstrapCard className="text-center h-100 d-flex align-items-center"  onClick={()=>handleClick(item.id)}>
                 <BootstrapCard.Img 
                   variant="top" 
-                  src={item.img} 
+                  // src={item.img} 
+                  src={new URL(`../assets/images/${item.img}`, import.meta.url).href}
                   style={{ width: "100px", marginTop: "10px", }} 
-                  alt="Item Icon" 
+                  alt={item.name} 
                   />
                 <BootstrapCard.Body className="d-flex align-items-end justify-content-center">
                   <BootstrapCard.Title className="fw-bold" style={{ fontSize: "24px" }}>

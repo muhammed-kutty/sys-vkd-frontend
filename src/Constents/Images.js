@@ -1,12 +1,20 @@
+import DRIVER from '../assets/images/drivers.jpg';
+import ELECTRITION from '../assets/images/electriiotion.jfif';
+import PAINTING from '../assets/images/wall painting.webp';
+import LOGO from '../assets/images/Logo.jpeg';
+import FALG_SYS_IMM from '../assets/images/falg_sys_imm.jpg';
+
+
+
 export const IMAGES={
-    DRIVER :'../../images/drivers.jpg',
-    ELECTRITION:"../../images/electriiotion.jfif",
-    PAINTING:"../../images/wall painting.webp",
-    LOGO:"../../images/Logo.jpeg"
+    DRIVER ,
+    ELECTRITION,
+    PAINTING,
+    LOGO
 }
 
 export const SliderImages = [
-    {id:3, imag:'../../images/falg_sys_imm.jpg'},
-    {id:5, imag:'https://mediamissionlive.com/wp-content/uploads/2015/12/sldr2.jpg?x94312'},
-    {id:1, imag:'../../images/falg_sys_imm.jpg'},
+    {id:3, imag:FALG_SYS_IMM},
+    {id:5, imag:'https://mediamissionlive.com/wp-content/uploads/2015/12/sldr2.jpg?x94312' ||FALG_SYS_IMM},
+    {id:1, imag:FALG_SYS_IMM},
 ]

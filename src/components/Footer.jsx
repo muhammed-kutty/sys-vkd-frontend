@@ -25,7 +25,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={6}>
-            <h5 className='fw-bolder fs-3 footer_text'>SYS Valakkuda</h5>
+            <h5 className='fw-bolder fs-3 footer_text' style={{fontFamily:"MyCustomFont, sans-serif "}}>SYS Valakkuda</h5>
             {/* <p>Your company description goes here.</p> */}
           </Col>
 

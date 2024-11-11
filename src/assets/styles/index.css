@@ -13,18 +13,22 @@
 }
 
 html , body{
-  /* background-color: #f4f4f4 !important; */
+  /* background: linear-gradient(120deg, #ffffff, #fdf4e3, #f9e6a9); */
+  /* background: linear-gradient(120deg, #ef0644, #64d105); */
+
  
   margin: 0;
   display: flex;
   flex-direction: column; /* Stack items vertically */
 }
 .main{
-  background-image: url('/images/BAGCIMG.jpg');
+  /* background-image: url('/images/BAGCIMG.jpg');
   background-size: cover;          
-  background-position: center;      /* Center the image */
+  background-position: center;   
   background-repeat: no-repeat;   
   background-attachment: fixed;
+  padding-bottom: 40px; */
+  background-color: #f4f4f4 !important;
   padding-bottom: 40px;
 }
 
@@ -60,19 +64,38 @@ transition: background-color 0.3s;
 
 .nav-link{
   color: #000000;
+  transition: color 0.3s ease, transform 0.3s ease !important;
+
 }
 
-.nav-item:hover{
-background-color: rgb(224, 219, 219);
-border-radius: 8px;
-padding: 0px 10px 0px 10px;
-  /* color: #FFFFFF; */
+.nav-link_formobile{
+  color: #000000;
+  background-color: #faecec !important; 
+   font-weight: 800 !important;
+  font-size: 20px !important;
+  padding: 40px 30px 10px 0px !important;
+  margin-top: 20px;
+  border-radius: 50px;
 }
-.nav-link a:hover{
-  color: #FFFFFF;
+
+
+.nav-link.active{
+  background-color: #dbdbc5 !important; /* Set your active background color */
+  color: #ef720c !important; /* Optional: change text color when active */
+  border-radius: 5px;
+  font-weight: 900;
+}
+
+.nav-link:hover{
+  background-color:rgb(155, 202, 74);
+  border-radius: 13px;
+transform: scale(1.05); 
+
+  color: #FFFFFF !important;
 }
 
 /*  */
+
 footer{
   height: 60px;
 }
@@ -219,9 +242,7 @@ footer{
 
 @font-face {
   font-family: 'MyCustomFont';
-  src: url('/fonts/Bauhaus-Heavy Regular.ttf') format('ttf'),
-       url('/fonts/my-custom-font.woff') format('woff'),
-       url('/fonts/my-custom-font.ttf') format('truetype');
+  src: url('../fonts/Bauhaus-Heavy\ Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -231,6 +252,7 @@ footer{
     width: 100%;      /* Full width */
     height: 80vh;    /* Custom height */
     object-fit: cover;
+
     /* transform: translate(10px, 20px); */
   
 }

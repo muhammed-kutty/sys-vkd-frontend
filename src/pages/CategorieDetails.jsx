@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ModalForm from '../Constents/ModalForm';
-import ComanTable from '../Constents/ComanTable';
+import ModalForm from '../components/ModalForm';
+import ComanTable from '../components/ComanTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-toastify";
 

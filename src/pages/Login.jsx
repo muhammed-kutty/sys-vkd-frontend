@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
-import axios from 'axios'
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { login } from '../redux/slices/AuthSlice';
-import { loginApi } from '../utils/Apiservices';
+import React, { useEffect, useState } from "react";
+import { Container, Form, Button, Alert } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { login } from "../redux/slices/AuthSlice";
+import { loginApi } from "../utils/Apiservices";
 
 const Login = () => {
+  const location = useLocation();
+  const msg = location?.state?.message;
+  useEffect(() => {
+    if (msg) {
+      setError(msg);
+    }
+  });
   const [formData, setFormData] = useState({
     // username: 'sysVKD@gmail.com',
     // password: 'sysvkd123'
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
-  const [error, setError] = useState('');
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,26 +30,25 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.username || !formData.password) {
-      setError('Please enter both username and password.');
+      setError("Please enter both username and password.");
     } else {
-      setError('');
+      setError("");
 
       try {
         // await axios.post('https://sys-valakkuda-projectbackend.onrender.com/api/auth/login',formData)
         await loginApi(formData)
-        .then((data)=>{
-        if(data?.data?.status){
-          dispatch(login(data?.data.token))
-          navigate('/')
-        }else{
-          setError("Something went Wrong")
-        }
-        })
+          .then((data) => {
+            if (data?.data?.status) {
+              dispatch(login(data?.data.token));
+              navigate("/");
+            } else {
+              setError("Something went Wrong");
+            }
+          })
 
-        .catch((err)=>{
-          setError( err?.response?.data?.message)
-        })
-        
+          .catch((err) => {
+            setError(err?.response?.data?.message);
+          });
       } catch (error) {
         console.error(error.response ? error.response.data : error.message);
       }
@@ -51,8 +56,15 @@ const Login = () => {
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center" style={{ height: '90vh' }}>
-      <Form onSubmit={handleSubmit} className="p-4  bg-light shadow border rounded" style={{ width: '100%', maxWidth: '400px' }}>
+    <Container
+      className="d-flex justify-content-center align-items-center"
+      style={{ height: "90vh" }}
+    >
+      <Form
+        onSubmit={handleSubmit}
+        className="p-4  bg-light shadow border rounded"
+        style={{ width: "100%", maxWidth: "400px" }}
+      >
         <h3 className="text-center mb-4">Login</h3>
 
         {error && <Alert variant="danger">{error}</Alert>}

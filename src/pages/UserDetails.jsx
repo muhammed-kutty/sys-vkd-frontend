@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import ModalForm from "../Constents/ModalForm";
-import ComanTable from "../Constents/ComanTable";
+import ModalForm from "../components/ModalForm";
+import ComanTable from "../components/ComanTable";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import Loader from "../Constents/Loader";
+import Loader from "../components/Loader";
 import {
   addUser,
   deleteUser,

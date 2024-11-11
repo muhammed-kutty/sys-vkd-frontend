@@ -37,6 +37,7 @@ const authSlice = createSlice({
     initialState:{
         status : 'idle',
         isAuthenticated:token_status,
+        // isAuthenticated:true,
         userToken:null,
         err:null
     },

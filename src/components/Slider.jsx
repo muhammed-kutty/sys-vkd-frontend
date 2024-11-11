@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import { SliderImages } from './Images';
+import { SliderImages } from '../Constents/Images';
 
 const Slider = () => {
   return (
