@@ -80,8 +80,9 @@ transition: background-color 0.3s;
 
 
 .nav-link.active{
-  background-color: #dbdbc5 !important; /* Set your active background color */
-  color: #ef720c !important; /* Optional: change text color when active */
+  /* background-color: #dbdbc5 !important; */
+  background-color: rgb(155, 202, 74);
+  color: #FFFFFF !important; /* Optional: change text color when active */
   border-radius: 5px;
   font-weight: 900;
 }

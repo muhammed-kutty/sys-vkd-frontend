@@ -19,7 +19,7 @@ const AppRoutes = () => {
 
   <Navbar />
     </div>
-  <div className=" row main flex-grow-1 ">
+  <div className=" row main  ">
 <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/about' element={<About />}/> 
