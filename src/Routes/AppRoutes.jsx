@@ -15,7 +15,7 @@ import ProtectedRouted from '../utils/ProtectedRouted'
 const AppRoutes = () => {
   return (
     <>
-    <div className='row'>
+    <div className='row' >
 
   <Navbar />
     </div>

@@ -127,7 +127,7 @@ const CustomNavbar = () => {
   };
 
   return (
-    <Navbar expand="lg" expanded={navExpand} className="navbar-light bg-light">
+    <Navbar expand="lg" expanded={navExpand} className="navbar-light px-3 pe-3 bg-light">
       <Container>
         <Link className="navbar-brand" to="/">
           <img
@@ -142,26 +142,26 @@ const CustomNavbar = () => {
             }}
           />
         </Link>
-        {
-          !navExpand ? 
+        {!navExpand ? (
           <div>
-<Navbar.Toggle
-        aria-controls="navbar-nav"
-        onClick={() => setnavExpand(true)}
-        />
-          </div>:
-          <div onClick={()=>setnavExpand(false)} className="border rounded  " style={{padding:"5px 25px 5px 25px", fontWeight:"bolder"}}>
-            <span >X</span>
-          </div> 
-        }
-        
+            <Navbar.Toggle
+              aria-controls="navbar-nav"
+              onClick={() => setnavExpand(true)}
+            />
+          </div>
+        ) : (
+          <div
+            onClick={() => setnavExpand(false)}
+            className="border rounded  "
+            style={{ padding: "5px 25px 5px 25px", fontWeight: "bolder" }}
+          >
+            <span>X</span>
+          </div>
+        )}
+
         <Navbar.Collapse id="navbar-nav" className={"navtoogle"}>
           <Nav className="ms-auto gap-2 pt-4 pb-4">
-            <Nav.Link
-              as={Link}
-              onClick={handleShare}
-              aria-current="page"
-            >
+            <Nav.Link as={Link} onClick={handleShare} aria-current="page">
               <i className="bi bi-share"></i> {/* Bootstrap share icon */}
               Share
             </Nav.Link>
