@@ -142,16 +142,24 @@ const CustomNavbar = () => {
             }}
           />
         </Link>
-        <Navbar.Toggle
-          aria-controls="navbar-nav"
-          onClick={() => setnavExpand(!navExpand)}
+        {
+          !navExpand ? 
+          <div>
+<Navbar.Toggle
+        aria-controls="navbar-nav"
+        onClick={() => setnavExpand(true)}
         />
-        <Navbar.Collapse id="navbar-nav" className=" navtoogle">
+          </div>:
+          <div onClick={()=>setnavExpand(false)} className="border rounded  " style={{padding:"5px 25px 5px 25px", fontWeight:"bolder"}}>
+            <span >X</span>
+          </div> 
+        }
+        
+        <Navbar.Collapse id="navbar-nav" className={"navtoogle"}>
           <Nav className="ms-auto gap-2 pt-4 pb-4">
             <Nav.Link
               as={Link}
               onClick={handleShare}
-              to="/"
               aria-current="page"
             >
               <i className="bi bi-share"></i> {/* Bootstrap share icon */}

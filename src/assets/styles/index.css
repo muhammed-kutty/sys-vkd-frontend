@@ -38,8 +38,10 @@ html , body{
 
 a{
   text-decoration: none !important;
-  color: #FFFFFF;
-  list-style:none;
+  color: #FFFFFF !important;
+  list-style:none !important;
+  padding: 0;
+  margin: 0;
 }
 
 
@@ -63,36 +65,32 @@ transition: background-color 0.3s;
 }
 
 .nav-link{
-  color: #000000;
   transition: color 0.3s ease, transform 0.3s ease !important;
-
+  color: #000000 !important;
 }
 
-.nav-link_formobile{
-  color: #000000;
-  background-color: #faecec !important; 
-   font-weight: 800 !important;
-  font-size: 20px !important;
-  padding: 40px 30px 10px 0px !important;
-  margin-top: 20px;
-  border-radius: 50px;
-}
 
+
+.navtoogle {
+  font-weight: 700;
+}
 
 .nav-link.active{
   /* background-color: #dbdbc5 !important; */
-  background-color: rgb(155, 202, 74);
-  color: #FFFFFF !important; /* Optional: change text color when active */
+  /* background-color: rgb(155, 202, 74); */
+   /* background: linear-gradient(to right, #5bf0f8, #2398f8); */
+  color: #2a93e9 !important; /* Optional: change text color when active */
   border-radius: 5px;
   font-weight: 900;
 }
 
 .nav-link:hover{
-  background-color:rgb(155, 202, 74);
-  border-radius: 13px;
+
+  border-radius: 5px;
 transform: scale(1.05); 
 
-  color: #FFFFFF !important;
+color: #2a93e9 !important; /* Optional: change text color when active */
+
 }
 
 /*  */

@@ -2,6 +2,7 @@ import DRIVER from '../assets/images/drivers.jpg';
 import ELECTRITION from '../assets/images/electriiotion.jfif';
 import PAINTING from '../assets/images/wall painting.webp';
 import LOGO from '../assets/images/Logo.jpeg';
+import LOGONEW from '../assets/images/sys vkd.png';
 import FALG_SYS_IMM from '../assets/images/falg_sys_imm.jpg';
 
 
@@ -10,7 +11,8 @@ export const IMAGES={
     DRIVER ,
     ELECTRITION,
     PAINTING,
-    LOGO
+    LOGO,
+    LOGONEW
 }
 
 export const SliderImages = [

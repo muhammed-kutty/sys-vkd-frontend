@@ -1,52 +1,66 @@
-// import React from 'react'
 
-// const Footer = () => {
-//   return (
-//     <footer className='bg-light mt-5 d-flex flex-column align-items-center justify-content-around'>
-//         <div className='text-center' >
-//             <span><small style={{fontWeight:"initial"}}>2024 © </small> <strong> SYS Valakkuda Unit </strong></span>
-//         </div>
-//         <div>
-//         <span>Contact Us</span>
-//         </div>
-//     </footer>
-//   )
-// }
-
-// export default Footer
 
 import React from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
-import { FaFacebook, FaTwitter, FaWhatsapp, FaGithub ,FaInstagram} from 'react-icons/fa'; // Import social icons
+import { FaFacebook, FaTwitter, FaWhatsapp ,FaInstagram, FaYoutube ,} from 'react-icons/fa'; // Import social icons
+import { IoMailOutline } from 'react-icons/io5';  // Mail icon
+import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
-  return (
-    <footer className=" text-dark py-4 h-50" style={{backgroundColor:"#e1f0df" }}>
-      <Container>
-        <Row>
-          <Col md={6}>
-            <h5 className='fw-bolder fs-3 footer_text' style={{fontFamily:"MyCustomFont, sans-serif "}}>SYS Valakkuda</h5>
-            {/* <p>Your company description goes here.</p> */}
-          </Col>
 
-          <Col md={6} className="d-flex justify-content-end align-items-center">
+  return (
+    <footer className=" text-light  h-100" style={{  background: "linear-gradient(to top, #000000, #1a1a1a, #333333)", padding:"100px 100px 50px 100px",backgroundColor:"#e1f0df" }}>
+      <Container>
+        <Row className=' mb-5 d-flex justify-content-between'>
+          <Col md={6} style={{width:"25%"}}>
+          <div>
+            <h5 className='fw-bolder fs-3 footer_text' >SYS Valakkuda</h5>
+
+          </div>
+
+          <div style={{fontWeight:"300", paddingLeft:"20px"}}>
+            Valakkuda Unit <br />
+            Kunnamangalam Circle <br />
+            Vengara Zone <br />
+            Malappuram West <br />
+          </div>
+
+          </Col>
+          <Col md={6} style={{width:"25%"}}>
+            <div>
+            <h5 className='fw-bolder fs-3 footer_text' >Quick Links</h5>
+            </div>
+            <div className='px-2'>
+             <p> <Link to='/contact'>Contact</Link></p>
+             <p>  <Link to='/about'>About</Link> </p>
+            </div>
+    </Col>
+
+            <Col md={6} style={{width:"25%"}}>
+            <div>
+            <h5 className='fw-bolder fs-3 footer_text' >Social Media</h5>
+            </div>
             <Nav className="ml-auto">
-              <Nav.Link href="https://www.facebook.com" target="_blank" className="text-light">
-                <FaFacebook size={30} color='black'/>
+              <Nav.Link href="https://www.youtube.com/@valakkuda_unit" target="_blank" className="text-light">
+                <FaYoutube size={30} color='white'/>
               </Nav.Link>
-              <Nav.Link href="https://www.twitter.com" target="_blank" className="text-light">
-                <FaTwitter size={30} color='black' />
+              <Nav.Link href="mailto:valakkudaunit@gmail.com" target="_blank" className="text-light">
+                <IoMailOutline size={30} color='white' />
               </Nav.Link>
-              <Nav.Link href="https://www.instagram.com" target="_blank" className="text-light">
-                <FaInstagram size={30} color='black' />
+              <Nav.Link href="https://www.instagram.com/valakkuda_unit?igsh=MWVodHphZ3FtdWh5cQ%3D%3D" target="_blank" className="text-light">
+                <FaInstagram size={30} color='white' />
               </Nav.Link>
               <Nav.Link href="https://wa.me/9526137176?text=Hello%20there!" target="_blank" className="text-light">
-                <FaWhatsapp size={30} color='black' />
+                <FaWhatsapp size={30} color='white' />
               </Nav.Link>
             </Nav>
           </Col>
-        </Row>
-        <Row className="mt-3">
+
+
+      
+          </Row>
+          <Row className="" style={{marginTop:"140px"}}>
           <Col className="text-center">
             <small>&copy; 2024 <strong style={{fontFamily:"MyCustomFont, sans-serif "}}>SYS Valakkuda Unit </strong>. All Rights Reserved.</small>
           </Col>

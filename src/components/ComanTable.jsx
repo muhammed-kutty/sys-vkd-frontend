@@ -1,8 +1,9 @@
 
 
-import React from "react";
+import React, { useState } from "react";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import ConfirmPopup from "./ConfirmPopup";
 
 const ComanTable = ({
   columns,
@@ -12,9 +13,15 @@ const ComanTable = ({
   onCall,
   name, 
   loading,
-  isAuth
+  isAuth,
+setDeleteConfirmation,  
+  deletConfirmation
 }) => {
 
+const [CurrentID, setCurrentID] = useState('')
+
+
+console.log("id==========",CurrentID)
   return (
 <>
 
@@ -31,10 +38,10 @@ const ComanTable = ({
 
       <tbody className="fw-bolder">
         {data?.map((item, index) => (
-          <tr key={item.id}>
+          <tr key={item.userID}>
             <td>{index + 1}</td>
             <td>{item.name}</td>
-            {name === 'user' && <td>{item.phone}</td>}
+            {name === 'user' && <td>{item.phone_number}</td>}
             <td>
               <Row className="g-1">
             {  
@@ -54,7 +61,12 @@ const ComanTable = ({
                     style={{width:"70px"}}
                     
                     variant="danger"
-                    onClick={() => onDelete(name === 'user' ? item.userID : item.categorieID )}
+                    // onClick={() => onDelete(name === 'user' ? item.userID : item.categorieID )}
+                    onClick={()=>{
+                      setDeleteConfirmation(true)
+                      const id = name === 'user' ? item.userID : item.categorieID 
+                      setCurrentID(id)
+                    }}
                     >
                     Delete
                   </Button>
@@ -80,6 +92,12 @@ const ComanTable = ({
       </tbody>
     </Table>
                 </div>
+        {
+          deletConfirmation &&
+           <ConfirmPopup show={deletConfirmation} setShow={setDeleteConfirmation} onConfirm={()=>onDelete(CurrentID)} />
+
+        }
+
       </>
   );
 };

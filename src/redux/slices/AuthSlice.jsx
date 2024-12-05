@@ -11,13 +11,13 @@ export const verifyToken= createAsyncThunk('auth/verifyToken',async(_,{rejectWit
             console.log("no token in local storage")
             return rejectWithValue('No token found');
         }
-        console.log("api called")
+        console.log("api called WITH token in user slice")
         // const responce = await axios.post('http://localhost:3000/api/auth/verify',{},{
         // const responce = await axios.post('https://sys-valakkuda-projectbackend.onrender.com/api/auth/verify',{},{
         //     headers:{
         //         Authorization:`Bearer ${token}`
         //     }
-        // })
+        // // })
 
         const responce = await verifyTokenApi()
         console.log("verify tokn",responce.data)

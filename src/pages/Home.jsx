@@ -11,30 +11,65 @@ const Home = () => {
   const cardRefs = useRef([]);
   const [loadedCount, setLoadedCount] = useState(1)
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting ) {
-          entry.target.classList.add('in-viewport');
-          setLoadedCount(prevCount => prevCount + 1)
-        }else{
-          entry.target.classList.remove('in-viewport');
+//   useEffect(() => {
+// console.log("api useefect in card")
+//     const observer = new IntersectionObserver((entries) => {
+//       entries.forEach(entry => {
+//         if (entry.isIntersecting ) {
+//           entry.target.classList.add('in-viewport');
+//           setLoadedCount(prevCount => prevCount + 1)
+//         }else{
+//           entry.target.classList.remove('in-viewport');
 
-        }
-      });
+//         }
+//       });
+//     });
+
+//     // Observe each card when it's rendered
+//     cardRefs.current.forEach(target => observer.observe(target));
+
+//     return () => {
+//       cardRefs.current.forEach(target => {
+//         if (target && target instanceof Element) {
+//           observer.unobserve(target);
+//         }
+//       });
+//     };
+//   }, [data , loadedCount]);
+
+
+useEffect(() => {
+  console.log("API useEffect in card");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-viewport');
+        setLoadedCount(prevCount => {
+          // Only update if count needs to change
+          if (prevCount < data.length) {
+            return prevCount + 1;
+          }
+          return prevCount;
+        });
+      } else {
+        entry.target.classList.remove('in-viewport');
+      }
     });
+  });
 
-    // Observe each card when it's rendered
-    cardRefs.current.forEach(target => observer.observe(target));
+  // Observe each card when it's rendered
+  cardRefs.current.forEach(target => observer.observe(target));
 
-    return () => {
-      cardRefs.current.forEach(target => {
-        if (target && target instanceof Element) {
-          observer.unobserve(target);
-        }
-      });
-    };
-  }, [data , loadedCount]);
+  return () => {
+    cardRefs.current.forEach(target => {
+      if (target && target instanceof Element) {
+        observer.unobserve(target);
+      }
+    });
+  };
+}, [data, loadedCount]);
+
 
   return (
     <main className="" >
@@ -50,7 +85,7 @@ const Home = () => {
 
         {data && data.slice(0, loadedCount).map((item, index) => (
           
-          <Card key={item.id} item={item} cardRefs={cardRefs} indx={index} />
+          <Card key={item.categorieID} item={item} cardRefs={cardRefs} indx={index} />
         ))}
         </Row>
         </Container>

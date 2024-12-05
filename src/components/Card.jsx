@@ -28,7 +28,7 @@ const Card = ({ item  , cardRefs , indx }) => {
 //       if(target) observer.unobserve(target)
 //     }
 //  },[])
-
+console.log("itemmmmmmmmmmmmmmm====",item)
 const handleClick = (id)=>{
   navigate(`/user-details/${id}`)
 }
@@ -37,9 +37,9 @@ const handleClick = (id)=>{
     <>
           {/* <Col key={item.id} md={6} lg={3} className={`animated_card ${isInviw ? 'in-viewport' : ''}`}> */}
            
-            <Col md={6} lg={3}  key={item.id}  ref={(el) => cardRefs.current[indx] = el} className="animated-card " >
+            <Col md={6} lg={3}  key={item.categorieID}  ref={(el) => cardRefs.current[indx] = el} className="animated-card " >
             {/* <Link to={`/user-details/${item.id}`} style={{ textDecoration: 'none' }}> */}
-              <BootstrapCard className="text-center h-100 d-flex align-items-center"  onClick={()=>handleClick(item.id)}>
+              <BootstrapCard className="text-center h-100 d-flex align-items-center"  onClick={()=>handleClick(item.categorieID)}>
                 <BootstrapCard.Img 
                   variant="top" 
                   // src={item.img} 

@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import axios from 'axios';
 import { fetchCategoriData } from '../redux/slices/CategorySlice';
 import { addCategory, deleteCategory, updateCategory } from '../utils/Apiservices';
+import ConfirmPopup from '../components/ConfirmPopup';
 
 const CategorieDetails = () => {
     const categoryDetails =  useSelector(state => state.category.data)
@@ -15,6 +16,8 @@ const CategorieDetails = () => {
     const [FormShown, setFormShown] = useState(false);
     const [isSubmting, setisSubmting] = useState(false)
     const [typofForm, settypofForm] = useState("add")
+  const [deleteCofirmation, setdeleteCofirmation] = useState(false)
+
     const [formData, setFormData] = useState({
         name: '',
       });
@@ -92,7 +95,7 @@ const CategorieDetails = () => {
     // Function to handle delete action
     const handleDelete =async (id) => {
         setisSubmting(true)
-
+        console.log("called,", id)
         try {
             const responce = await deleteCategory(id)
             // const responce = await axios.delete(`https://sys-valakkuda-projectbackend.onrender.com/api/category/${id}`,{
@@ -105,6 +108,8 @@ const CategorieDetails = () => {
                 toast.error(message, {autoClose:3000})
 
             }
+      setdeleteCofirmation(false)
+
         } catch (error) {
             console.log("CAtegoruy form submiting error",error)
             toast.error(error?.response?.data?.message || error.message, {autoClose:3000})
@@ -136,7 +141,7 @@ const CategorieDetails = () => {
     }
 
     return (
-        <>
+        <div className='spclcontainer'>
             {FormShown && <ModalForm handleClose={handleCloseForm} name='Category' mode={typofForm} isSubmting={isSubmting} formData={formData} setFormShown={setFormShown} handlechange={handleChange} handlesubmit={handleSubmit} FormShown={FormShown} formFiels={Form_Fields} />}
             <div className="row">
                 <div className="col-12 text-center mt-5 mb-3">
@@ -164,10 +169,19 @@ const CategorieDetails = () => {
                 onEdit={handleEdit}
                 loading={isSubmting}
                 isAuth={isAuthenticated}
+            deletConfirmation={deleteCofirmation}
+            setDeleteConfirmation={setdeleteCofirmation}
+
 
             />
+
+{/* {
+        deleteCofirmation && 
+        <ConfirmPopup show={deleteCofirmation} setShow={setdeleteCofirmation} onConfirm={handleDelete} />
+      } */}
+
             {/* <ToastContainer /> */}
-        </>
+        </div>
     );
 };
 

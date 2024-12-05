@@ -70,6 +70,7 @@ import { fetchCategoriData } from './redux/slices/CategorySlice'
 import Loader from './components/Loader'
 import ScrollToTop from './utils/ScrollTop'
 import AppRoutes from './Routes/AppRoutes'
+import { verifyToken } from './redux/slices/AuthSlice'
 
 function App() {
   const dispatch = useDispatch()
@@ -77,9 +78,11 @@ function App() {
 
 
   useEffect(()=>{
+    console.log('useEffect triggered');
+
     dispatch(fetchCategoriData())
-    // dispatch(verifyToken())
-  },[dispatch])
+    dispatch(verifyToken())
+  },[])
 
   if(status === 'loading'){
     return <Loader />

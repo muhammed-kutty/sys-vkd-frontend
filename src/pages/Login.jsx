@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { login } from "../redux/slices/AuthSlice";
 import { loginApi } from "../utils/Apiservices";
+import {FaEye , FaEyeSlash} from 'react-icons/fa'
 
 const Login = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const Login = () => {
     password: "",
   });
   const [error, setError] = useState("");
+  const [showPassword, setshowPassword] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,7 +46,7 @@ const Login = () => {
             } else {
               setError("Something went Wrong");
             }
-          })
+          }) 
 
           .catch((err) => {
             setError(err?.response?.data?.message);
@@ -81,14 +83,19 @@ const Login = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formPassword">
+          <div style={{position:"relative"}}>
+
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="password"
+          
+            type={!showPassword?"password":'text'}
             placeholder="Enter password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-          />
+            />
+          <p style={{position:"absolute", top:"40px", right:"30px" , background:"none", border:"none", cursor:"pointer"}} onClick={()=>setshowPassword(!showPassword)}>{showPassword ? <FaEyeSlash /> : <FaEye /> }</p>
+            </div>
         </Form.Group>
 
         <Button variant="primary" type="submit" className="w-100 mt-3">

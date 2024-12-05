@@ -13,62 +13,69 @@ import {
 } from "../utils/Apiservices";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import jsonData from "../Constents/data/data.json";
+import ConfirmPopup from "../components/ConfirmPopup";
 
 const UserDetails = () => {
   const { id } = useParams();
   const userDetails = useSelector((state) => state.user.data);
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const {userToken , isAuthenticated} = useSelector(state => state.auth)
+
 
   const [issubmiting, setissubmiting] = useState(false);
   const [FormShown, setFormShown] = useState(false);
   const [data, setdata] = useState([]);
   const [typeofForm, settypeofForm] = useState("add");
   const [loading, setloading] = useState(false);
-  const [category, setcategory] = useState({});
+  const [category, setcategory] = useState();
   const [filterdData, setfilterdData] = useState([]);
 
   const [searchKeyword, setsearchKeyword] = useState("");
-
+  const [deleteCofirmation, setdeleteCofirmation] = useState(false)
   const [formData, setformData] = useState({});
 
-  // const fettch_data = async () => {
-  //     setloading(true)
-  //   try {
-  //   const res = await fetchUserbyCatID(id);
-  //   console.log("responce====", res);
-  //       setdata(res.data.data);
-  //   } catch (error) {
-  //       console.log(
-  //           "Categoruy form submiting error",
-  //           error?.response?.data?.message
-  //         );
-  //         toast.error(error?.response?.data?.message || error.message, {
-  //           autoClose: 3000,
-  //         });
-  //       } finally {
-  //        setloading(false)
-  //         // dispatch(fetchUserbyCatID(id))
-  //       }
-
-  // };
-
   const fettch_data = async () => {
-    setloading(true);
+      setloading(true)
     try {
-      const data = jsonData?.users?.filter((item) => item.category_id == id);
-      setdata(data);
-      const item = jsonData?.categories?.find((item) => item.id == id);
-      console.log("jadkbvvvvvvvvvvvvvvv", item);
-      setcategory(item);
+    const res = await fetchUserbyCatID(id);
+    console.log("responce====", res);
+    
+    const data = res?.data?.data
+    setdata(data);
+      const category = data?.[0]?.categoryName
+      setcategory(category)
     } catch (error) {
-      toast.error(error?.response?.data?.message || error.message, {
-        autoClose: 3000,
-      });
-    } finally {
-      setloading(false);
-      // dispatch(fetchUserbyCatID(id))
-    }
+        console.log(
+            "Categoruy form submiting error",
+            error?.response?.data?.message
+          );
+          toast.error(error?.response?.data?.message || error.message, {
+            autoClose: 3000,
+          });
+        } finally {
+         setloading(false)
+          // dispatch(fetchUserbyCatID(id))
+        }
+
   };
+
+  // const fettch_data = async () => {
+  //   setloading(true);
+  //   try {
+  //     const data = jsonData?.users?.filter((item) => item.category_id == id);
+  //     setdata(data);
+  //     const item = jsonData?.categories?.find((item) => item.id == id);
+  //     console.log("jadkbvvvvvvvvvvvvvvv", item);
+  //     setcategory(item);
+  //   } catch (error) {
+  //     toast.error(error?.response?.data?.message || error.message, {
+  //       autoClose: 3000,
+  //     });
+  //   } finally {
+  //     setloading(false);
+  //     // dispatch(fetchUserbyCatID(id))
+  //   }
+  // };
 
   useEffect(() => {
     fettch_data();
@@ -163,6 +170,7 @@ const UserDetails = () => {
       if (status === true) {
         toast.error(message, { autoClose: 3000 });
       }
+      setdeleteCofirmation(false)
     } catch (error) {
       console.log("CAtegoruy form submiting error", error);
       toast.error(error?.response?.data?.message || error.message, {
@@ -244,6 +252,7 @@ const UserDetails = () => {
   }, [data, searchKeyword]);
 
 
+ 
   return (
     <div className="spclcontainer">
       {FormShown && (
@@ -263,7 +272,7 @@ const UserDetails = () => {
       )}
       <div className="row custm_animTop d-flex justify-content-center ">
         <div className="col-12 text-center  text-bg-light w-50 p-2 rounded fw-bolder mt-5 mb-3">
-          <h1 className="">{category.name}</h1>
+          <h1 className="">{category ? category :''}</h1>
         </div>
       </div>
       {isAuth && (
@@ -344,7 +353,7 @@ const UserDetails = () => {
       </div>
 
       {data.length !== 0 ? (
-        <div className="custm_animTop">
+        <div className="custm_animTop" >
           <ComanTable
             columns={columns}
             data={filterdData.length !== 0 ? filterdData : data}
@@ -353,6 +362,8 @@ const UserDetails = () => {
             onEdit={handleEdit}
             name="user"
             isAuth={isAuth}
+            deletConfirmation={deleteCofirmation}
+            setDeleteConfirmation={setdeleteCofirmation}
           />
         </div>
       ) : (
@@ -366,6 +377,11 @@ const UserDetails = () => {
           </Row>
         )
       )}
+
+      {/* {
+        deleteCofirmation && 
+        <ConfirmPopup show={deleteCofirmation} setShow={setdeleteCofirmation} onConfirm={handleDelete} />
+      } */}
 
       {loading && <Loader />}
     </div>
